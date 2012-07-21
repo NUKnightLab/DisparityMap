@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Disparity Map</title>
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/disparitymap.css" type="text/css" media="screen">
+		<!-- Javascript -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/disparitymap.js"></script>
+		
+		<script type="text/javascript">
+
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-27443321-1']);
+		  _gaq.push(['_setDomainName', 'medill.co']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+
+		</script>
+		
+	</head>
+	
+	<body>
+		<div id="disparitymap">
+			
+		</div>
+		<div class="container">
+			
+			<div id="header" class="span-24 last prepend-top">
+				
+				
+			</div>
+			<div id="page">
+				
+				<div id="mapapp">
+					
+					<div class="map-header">
+						
+						<div>
+							<div class="col700">
+								<h1 >Disparity Map</h1>
+								<p>
+									This map divides Chicago into 77 "community areas," a system used since the 1920s to analyze and understand the city's neighborhoods. These urban communities reflect the city’s differences in race, housing, income and education.
+								</p>
+							</div>
+
+							<div class="col300-last">
+								<div class="about">
+									You can select a <em style="color:#c43c35">disparity filter </em> and see how your community stacks up. As you select the criteria the most disadvantaged community areas will darken. Selecting additional filters will combine results.
+								</div>
+
+							</div>
+							<div class="clear"></div>
+
+						</div>
+						
+						<div class="col2">
+							
+						</div>
+						<div class="clear"></div>
+					</div>
+					
+
+					
+					<div class="map-container">
+						<!-- 
+						<div id="key" >
+							<ul>
+								<li><span class="label blue">black</span></li>
+								<li><span class="label green">asian</span></li>
+								<li><span class="label pink">white</span></li>
+								<li><span class="label orange">hispanic</span></li>
+								<li><span class="label grey">no majority</span></li>
+							</ul>
+						</div>
+						-->
+						<div id="map"></div>
+						
+					</div>
+
+					<div class="ui-container">
+						<div id="map-ui">
+							<div class="input">
+								<ul class="inputs-list">
+									<!-- This is based on the column data from the fusion tables-->
+									<!-- ADD NEW STUFF -->
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" class="default-check" value="people_in_poverty">
+												<span>People in Poverty</span>
+											</label>
+										</div>
+									</li>
+									<!-- ADD NEW STUFF -->
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="vacant_housing">
+												<span>Vacant Housing</span>
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="households_receiving_food_stamps">
+												<span>Households Receiving Food Stamps</span>
+											</label>
+										</div>
+									</li>
+									<!--
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="per_capita_income">
+												<span>Average Income per Person</span>
+											</label>
+										</div>
+									</li>
+									-->
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="renter-occupied_housing">
+												<span>Renter-Occupied Housing</span>
+											</label>
+										</div>
+									</li>
+									<li>
+										<div class="input-checkbox">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="high_school_education_or_less">
+												<span>High School Education or Less</span>
+											</label>
+										</div>
+									</li>
+								</ul>
+								<div class="map-section-break"></div>
+								<!--
+								<ul class="inputs-list">
+									<li>
+										<div class="input-checkbox grey">
+											<label>
+												<input type="checkbox" name="optionsCheckboxes" value="reveal_by_race" class="reveal_by_race">
+												<span>Reveal by Race</span>
+											</label>
+										</div>
+									</li>
+								</ul>
+								-->
+								<span class="help-block">
+									<strong>Note:</strong> Ranked by filters above from most disadvantaged to least
+								</span>
+								<div class="map-ui-section btn-section">
+									<button id="all-boxes" class="btn">Select All</button>
+									<button id="clear-boxes" class="btn">Clear</button>
+								</div>
+
+							</div>
+							
+						</div>
+						<div id="top-results"></div>
+						
+					</div>
+					<div id="map-results">
+						<h3>Community Rank</h3>
+						<ol>
+							<li><a href="#" class="com_link" title="46">Burnside</a></li>
+						</ol>
+					</div>
+					
+				</div>
+				
+			</div>
+
+
+			<div id="footer" class="span-24 last prepend-top">
+				<div class="map-class">
+					<div class="col1">
+						<h3>About</h3>
+						<p>
+							The <a href="http://www.medill.northwestern.edu/" target="_blank">Medill School of Journalism</a>'s <a href="http://digiwatchdog.com/" target="_blank">Community Media Innovation Project for Fall 2011</a> was charged with improving the website of the <a href="http://www.chicagoreporter.com/" target="_blank">Chicago Reporter</a>, an investigative bimonthly magazine dealing with race and poverty. The Reporter's investigations are heavily data-driven so one of our goals was to suggest ways they could present that data more effectively on the web. We developed the <a href="#mapapp">Disparity Map</a> to address this issue.
+						</p>
+						<h3>Credits</h3>
+						<p class="credits">
+							Students <a href="http://twitter.com/dsjoerdsma" target="_blank">Donald Sjoerdsma</a> and <a href="http://pattyhastings.com/" target="_blank">Patricia Hastings</a> came up with the concept for the map and assembled the data. <a href="http://zachwise.com" target="_blank">Associate Prof. Zach Wise</a> helped them develop the JavaScript functionality behind the map.
+						</p>
+					</div>
+					<div class="col2">
+						<h3>The Disparity Map: Data and Geography</h3>
+						<p>The Disparity Map uses data from the U.S. Census Bureau&rsquo;s American Community Survey, specifically the 2005-2009 aggregated estimates. The data we used:</p>
+						<ul>
+						  <li><strong>People in Poverty</strong> is the percentage of population living below the U.S. government-defined &ldquo;poverty line.&rdquo; In 2009, for a family of four, this meant a household income of less than $22,050.</li>
+						  <li><strong>Vacant Housing</strong> is the percentage of total housing units that are vacant.</li>
+						  <li><strong>Households Receiving Food Stamps</strong> is the percentage of total households receiving benefits under the Supplemental Nutrition Assistance Program (formerly known as &ldquo;food stamps&rdquo;).</li>
+						  <li><strong>Renter-Occupied  Housing</strong> is the percentage of occupied housing units that are occupied by renters rather than owners.</li>
+						  <li><strong>High School Education or Less</strong> is the percentage of people 25 and older who have a high school education or less.</li>
+						</ul>
+						<p>Because these are based on samples of the population over a five-year period, they are less precise than the decennial census. Therefore, every data point included in the Disparity Map should be considered to be an approximation with an associated (+/-) margin of error. You can find more information about the ACS estimates <a href="http://www.census.gov/acs/www/Downloads/data_documentation/Accuracy/MultiyearACSAccuracyofData2009.pdf" target="_blank">here</a>.</p>
+						<p>The polygons represented on the map are the 77 Chicago  &ldquo;<a href="http://en.wikipedia.org/wiki/Community_areas_in_Chicago" target="_blank">community areas</a>.&rdquo; This approach to dividing the city was first created by sociologists in the 1920s and has continued to be widely used by academics and government agencies. The community areas are not &ldquo;neighborhood&rdquo; boundaries; in fact, most community areas are large enough to incorporate multiple neighborhoods. The Encyclopedia of Chicago <a href="http://encyclopedia.chicagohistory.org/pages/1760.html" target="_blank">says</a> the community areas &ldquo;capture neither individual community identity nor the territorial reality of social groups. They remain useful, however, as subdivisions  of city space that allow the study of change over time because of their stable boundaries.&rdquo; In addition, the Chicago Reporter, our partner for this project, frequently analyzes geographically segmented data by community area. It is  relatively easy to convert U.S. Census data to community areas because few census tract boundaries cross  community area boundaries.</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+
+				
+			</div>
+		
+		</div>
+		
+	</body>
+
+</html>

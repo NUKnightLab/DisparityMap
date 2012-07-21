@@ -1,0 +1,60 @@
+/*!
+	DISPARITY MAP CSS
+	Designed and built by Zach Wise at VeriteCo
+*/
+
+/*	THEME DEFAULT
+----------------------------------------------------- */
+	//GFX
+	.base-sprite() {
+		background-image: url(timeline.png?v3.4);
+	}
+	.loading-sprite() {
+		background-image: url(loading.gif?v3.4);
+	}
+	
+	// COLORS
+	@color-base:					#FFF;
+	@color-line: 					#CCC;
+	@color-line-hover: 				#666;
+	@color-dark:					#000;
+	@color-dark-second: 			#333;
+	@color-dark-third: 				#666;
+	@color-dark-fourth: 			#999;
+	@color-dark-fifth: 				#E3E3E3;
+	@color-background-dark:			#F4F4F4;
+	// COLOR THEME
+	@color-theme:					#C43C35;//#08C;	//#FF3712; //#FF0000;
+	@color-theme-second:			#0B484E;
+	
+/*	BASE
+----------------------------------------------------- */
+
+// CSS Reset
+@import "Reset.less";
+
+// Core variables and mixins
+@import "Font.Default.less";
+@import "Variables.less";
+@import "Mixins.less"; 
+@import "GFX.less";
+
+// Typography
+@import "Typography.less";
+
+// Core
+@import "VMM.DisparityMap.Core.less";
+
+// Data Map
+@import "VMM.DataMap.less";
+
+// Navigation
+@import "VMM.DataNav.less";
+
+// Data List
+@import "VMM.DataList.less";
+
+// Leaflet Map
+@import "VMM.Leaflet.less";
+
+

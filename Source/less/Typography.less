@@ -1,0 +1,152 @@
+/* Typography.less
+ * Headings, body text, lists, etc
+ * ---------------------------------------------------------------------------------------- */
+
+.vmm-disparitymap {
+	font-size: @base-font;
+	font-weight: normal;
+	line-height: @base-line;
+	-webkit-font-smoothing: antialiased; /* Fix for webkit rendering */
+	-webkit-text-size-adjust: 100%;
+	
+	p {
+		font-size: @base-font;
+		font-weight: normal;
+		line-height: @base-line;
+		margin-bottom: @base-line;
+		color: @color-dark-third;
+		
+		small {
+			font-size: @base-font - 3;
+			line-height: @base-line - 3;
+		}
+	}
+	p:first-child { 
+		margin-top:@base-line;
+	}
+	.hyphenate {
+		-webkit-hyphens:auto;
+		   -moz-hyphens:auto;
+		    -ms-hyphens:auto;
+		        hyphens:auto;
+		word-wrap:break-word;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: normal;
+		color: @color-feature-title;
+		text-transform: none;
+		a {
+			color: @color-dark-fourth;
+		}
+		small {
+			color: @color-dark-fourth;
+		}
+	}
+	h1 {
+		margin-bottom: @base-space;
+		font-size: 32px;
+		line-height: 43px;
+		small {
+			font-size: 18px;
+			line-height: 25px;
+		}
+	}
+	h2 {
+		margin-bottom: @base-space;
+		font-size: 28px;
+		line-height: 37px;
+
+		small {
+			font-size: 14px;
+			line-height: 20px;
+			
+			//margin-left:5px;
+		}
+	}
+	h3, h4, h5, h6 {
+		line-height: @base-line * 2;
+		.active {
+			color: @color-theme;
+		}
+	}
+	h3 {
+		font-size: 28px;
+		line-height: 37px;
+		//font-size: 24px;
+		//line-height:26px;
+		small {
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+	h4 {
+		font-size: 20px;
+		line-height: 27px;
+		small {
+			font-size: 12px;
+			line-height: 18px;
+		}
+	}
+	h5 {
+		font-size: 16px;
+		line-height:22px;
+		
+		//font-size: 14px;
+		//line-height:16px;
+	}
+	h6 {
+		font-size: 13px;
+		line-height:19px;
+		text-transform: uppercase;
+	}
+	strong {
+		font-weight:bold;
+		font-style:inherit;
+	}
+	em {
+		font-style: italic;
+		font-weight: inherit;
+	}
+	Q {
+		quotes: '„' '“';
+		font-style: italic;
+	}
+	
+	/* BLOCKQUOTES
+	================================================== */
+	
+	blockquote, blockquote p {
+		font-size: @base-font-large;
+		line-height: @base-line-large;
+		text-align:left;
+		margin-bottom: 6px;
+		padding-top: 10px;
+		background-color:@white;
+		color:@color-dark-fourth;
+		
+	}
+	
+	/* Caption and Credits
+	================================================== */
+	
+	.credit {
+		color: @color-credit;
+		text-align: right;
+		font-size: 10px;
+		line-height: 10px;
+		display: block;
+		margin: 0 auto;
+		clear:both;
+	}
+	.caption {
+		text-align:left;
+		margin-top:5px;
+		color: @color-caption;
+		font-size: 11px;
+		line-height: 14px;
+		clear:both;
+	}
+	
+	
+}

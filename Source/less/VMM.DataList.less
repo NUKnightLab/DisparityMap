@@ -1,0 +1,134 @@
+/*
+ * Data Map
+ * ------------------------------------------------------------------------------------------- */
+
+/* DATAMAP
+================================================== */
+.vmm-disparitymap {
+	.datalist {
+		//margin-left:		@base-space;
+		h3 {
+			font-size: 20px;
+			line-height: 27px;
+		}
+		.datalist-note {
+			font-size:		@base-font-small + 1;
+			font-style:		italic;
+			line-height:	@base-font-small + 2;
+			color:			@color-dark-fourth;
+			margin-bottom:	@base-space;
+			//margin-left:	5px;
+			//margin-right:	5px;
+		} 
+		
+		ul {
+			
+			li.datalist-item {
+				font-size: @base-font;
+				line-height: @base-line;
+				color: @color-dark-third;
+				margin-bottom: 5px;
+				.datalist-item-container {
+					position:relative;
+					.datalist-item-title {
+						
+						color:			@color-dark-second;//@color-base;
+						font-weight:	bold;
+						//text-shadow:	@color-dark-second 0px 1px 0px;
+						text-shadow:	none;
+						position:		relative;
+						top:			0px;
+						left:			0px;
+						width:			100%;
+						z-index:		2;
+						.label {
+							text-shadow:	none;
+							color:			@color-dark-second;
+						}
+						
+					}
+					.datalist-item-title.top-rank {
+						//color: @color-theme;
+					}
+					
+					.datalist-item-graph {
+						position:	absolute;
+						top:		0px;
+						left:		0px;
+						width:		100%;
+						z-index:	1;
+						.opacity(15);
+					}
+				}
+			
+			}
+		
+			li.datalist-item:hover,  li.datalist-item.mouse-hover {
+				cursor: pointer;
+				color: @color-dark-second;
+				background-color: @color-background-dark;
+				.label.rank {
+					background-color: @color-dark-second;
+				}
+				.datalist-item-container {
+					.datalist-item-title {
+						color:			@color-base;
+						text-shadow:	@color-dark -1px 1px 2px;
+						.label {
+							color:			@color-base;
+							text-shadow:	@color-dark -1px 1px 2px;
+						}
+					}
+					.datalist-item-graph {
+						.opacity(100);
+					}
+				}
+			}
+		
+			li.datalist-item.active {
+				color: @color-base;
+				background-color: @color-theme-second;
+				.label.rank {
+					background-color: @color-theme-second;
+				}
+				.datalist-item-container {
+					.datalist-item-title {
+						color:			@color-base;
+						text-shadow:	@color-dark -1px 1px 2px;
+						.label {
+							color:			@color-base;
+							text-shadow:	@color-dark -1px 1px 2px;
+						}
+					}
+					.datalist-item-graph {
+						.opacity(100);
+					}
+				}
+			}
+			li.datalist-item.active:hover {
+				background-color: @color-theme-second-dark;
+				.label.rank {
+					background-color: @color-theme-second-dark;
+				}
+			}
+		
+			li.datalist-item.top-rank {
+				color: @color-theme;
+			}
+			li.datalist-item.top-rank:hover {
+				color: @color-theme-dark;
+				.label.rank {
+					background-color: @color-theme-dark;
+				}
+			}
+		
+		}
+		
+		
+	}
+}
+
+
+
+
+

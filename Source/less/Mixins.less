@@ -1,0 +1,107 @@
+/* Mixins.less
+ * Snippets of reusable CSS to develop faster and keep code readable
+ * ----------------------------------------------------------------- */
+
+
+// Clearfix for clearing floats like a boss h5bp.com/q
+.clearfix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    zoom: 1;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Border Radius
+.border-radius(@radius: 5px) {
+	-webkit-border-radius: @radius;
+	   -moz-border-radius: @radius;
+	        border-radius: @radius;
+}
+// Border Radius Top
+.border-radius-top(@radius: 5px) {
+	-webkit-border-top-right-radius: @radius;
+	    -moz-border-radius-topright: @radius;
+	        border-top-right-radius: @radius;
+	
+	-webkit-border-top-left-radius: @radius;
+	    -moz-border-radius-topleft: @radius;
+	        border-top-left-radius: @radius;
+}
+// Border Radius Bottom
+.border-radius-bottom(@radius: 5px) {
+	-webkit-border-bottom-right-radius: @radius;
+	    -moz-border-radius-bottomright: @radius;
+	        border-bottom-right-radius: @radius;
+	
+	-webkit-border-bottom-left-radius: @radius;
+	    -moz-border-radius-bottomleft: @radius;
+	        border-bottom-left-radius: @radius;
+}
+
+// User Select
+.user-select(@userselect) {
+	-webkit-user-select: @userselect;
+	   -moz-user-select: @userselect;
+	        user-select: @userselect;
+}
+// Box Shadow
+.box-shadow(@boxshadow) {
+	-webkit-box-shadow: @boxshadow;
+	   -moz-box-shadow: @boxshadow;
+	        box-shadow: @boxshadow;
+}
+
+// Transform
+.transform(@transform) {
+	-webkit-transform: @transform;
+	   -moz-transform: @transform;
+	    -ms-transform: @transform;
+	     -o-transform: @transform;
+	        transform: @transform;
+}
+// Transitions
+.transition(@transition) {
+	-webkit-transition: @transition;
+	   -moz-transition: @transition;
+	    -ms-transition: @transition;
+	     -o-transition: @transition;
+	        transition: @transition;
+}
+
+// Background clipping
+.background-clip(@clip) {
+	-webkit-background-clip: @clip;
+	   -moz-background-clip: @clip;
+	        background-clip: @clip;
+}
+
+// Opacity
+.opacity(@opacity: 100) {
+	filter: e(%("alpha(opacity=%d)", @opacity));
+	-khtml-opacity: @opacity / 100;
+	  -moz-opacity: @opacity / 100;
+	       opacity: @opacity / 100;
+}
+
+// CSS3 Content Columns
+.content-columns(@columnCount: 3, @columnGap: 20px) {
+  -webkit-column-count: @columnCount;
+     -moz-column-count: @columnCount;
+          column-count: @columnCount;
+  -webkit-column-gap: @columnGap;
+     -moz-column-gap: @columnGap;
+          column-gap: @columnGap;
+}
+
+// Center-align a block level element
+.center-block() {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
