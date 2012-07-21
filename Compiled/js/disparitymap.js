@@ -7761,7 +7761,7 @@ L.Map.include({
 /*	* CodeKit Import
 	* http://incident57.com/codekit/
 ================================================== */
-// @codekit-prepend "Lib/Leaflet.js";
+// @codekit-prepend "Core/Library/Leaflet.js";
 
 if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 	
