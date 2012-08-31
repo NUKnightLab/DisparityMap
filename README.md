@@ -96,7 +96,10 @@ Extra information that is displayed in the popup but is not a ranking factor
 * `note` disclaimers or further discription. It's shown next to the title.
 
 ### Google Fusion
-`fusion_id` The id of the fusion table you want to load
+`fusion_id` The numberic id of the fusion table you want to load
+You can find the numeric id under `file > about`
+![File About](http://24p.co/screenshots/DisparityMap-Fusiontable-about.png)
+![Numberic ID](http://24p.co/screenshots/DisparityMap-NumbericID.png)
 
 ### Shape Source
 `shape_source` The json file that contains the shape data.
