@@ -9176,8 +9176,6 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				
 			for(i = 0; i < config.columns.length; i++) {
 				config.columns[i].uniqueid = "datanav-item-" + VMM.Util.unique_ID(5);
-				
-
 				if (data.communities[0].community.fusion[config.columns[i].column_name + "_rank"] > 0) {
 					trace("EXISTS");
 				} else {
@@ -9194,8 +9192,6 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				// Make Strings with Percentages to Numbers
 				for (prop in community.fusion) {
 					if (Object.prototype.hasOwnProperty.call(community.fusion, prop)) {
-						trace("PROP");
-						trace(community.fusion[prop]);
 						if (type.of(community.fusion[prop]) == "string") {
 							if (community.fusion[prop].match("%")) {
 								community.fusion[prop + "_percent"] = community.fusion[prop];
@@ -9203,8 +9199,6 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 								
 							}
 						}
-						
-						trace(community.fusion[prop]);
 					}
 				}
 			}
@@ -9322,23 +9316,58 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			createRanks: function(d) {
 				trace("CREATE RANKS");
 				var i	= 0,
-					j	= 0;
+					j	= 0,
+					k	= 0;
 					
 				for(i = 0; i < needs_rank.length; i++) {
+					var is_rank_percent = false,
+						is_money		= false;
 					
-					
-					function sortbyrank(a, b) {
+					function sortby_rank(a, b) {
 						var a1= a.community.fusion[needs_rank[i]], b1= b.community.fusion[needs_rank[i]];
 					    if(a1== b1) return 0;
 					    return a1> b1? 1: -1;
 					}
+					function sortby_percentrank(a, b) {
+						var a1= a.community.fusion[needs_rank[i] + "_percentrank"], b1= b.community.fusion[needs_rank[i] + "_percentrank"];
+					    if(a1== b1) return 0;
+					    return a1> b1? 1: -1;
+					}
 					
-					data.communities.sort(sortbyrank);
+					function sortby_moneyrank(a, b) {
+						var a1= a.community.fusion[needs_rank[i] + "_moneyrank"], b1= b.community.fusion[needs_rank[i] + "_moneyrank"];
+					    if(a1== b1) return 0;
+					    return a1> b1? 1: -1;
+					}
+					
+					// Fix numbers if it's a percentage to make sure sort is correct
+					for(k = 0; k < data.communities.length; k++) {
+						var community = data.communities[k].community;
+						if(typeof community.fusion[needs_rank[i] + "_percent"] != 'undefined') {
+							is_rank_percent = true;
+							community.fusion[needs_rank[i] + "_percentrank"] = 100 - community.fusion[needs_rank[i]];
+						} else if (type.of(community.fusion[needs_rank[i]]) == "string") {
+							if (community.fusion[needs_rank[i]].match("$")) {
+								is_money = true;
+								community.fusion[needs_rank[i] + "_moneyrank"] = parseFloat(community.fusion[needs_rank[i]].replace("$", "").replace(",", ""));
+							}
+						}
+					}
+					
+					if (is_rank_percent) {
+						trace("SORT BY PERCENT RANK");
+						data.communities.sort(sortby_percentrank);
+					} else if (is_money) {
+						data.communities.sort(sortby_moneyrank);
+						data.communities.reverse();
+					} else {
+						data.communities.sort(sortby_rank);
+					}
+					
 					
 					for(j = 0; j < data.communities.length; j++) {
 						var community = data.communities[j].community;
 						community.fusion[needs_rank[i] + "_rank"] = (j + 1);
-						//trace("RANK " + community.fusion[needs_rank[i] + "_rank"]);
 					}
 					
 				}
@@ -9411,7 +9440,8 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					has_percent		= false,
 					item_value		= "",
 					item_rank		= Math.round(parseInt(community.fusion[column.column_name + "_rank"], 10)),
-					item_rank_class = "";
+					item_rank_class = "",
+					is_money		= false;
 				
 						
 				if(typeof community.fusion[column.column_name + "_percent"] != 'undefined') {
@@ -9419,6 +9449,15 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					item_value		= Math.round(parseInt(community.fusion[column.column_name + "_percent"], 10));
 				} else {
 					item_value		= community.fusion[column.column_name];
+					//trace(item_value);
+					if (type.of(item_value) == "string") {
+						//trace(item_value);
+						if (item_value.match("$")) {
+							is_money = true;
+							item_value = parseInt(item_value.replace("$", "").replace(",", ""));
+						}
+					}
+					
 				}
 						
 				if (isNaN(item_rank)) {
@@ -9453,7 +9492,11 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					item		+= "</div>";
 				} else {
 					item		+= "<div class='filter-number'>";
-					item		+= VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+					if (is_money) {
+						item		+= "$" + VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+					} else {
+						item		+= VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+					}
 					item		+= "</div>";
 				}
 						
