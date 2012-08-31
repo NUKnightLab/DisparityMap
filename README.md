@@ -100,7 +100,8 @@ Extra information that is displayed in the popup but is not a ranking factor
 You can find the numeric id under `file > about`
 ![File About](http://24p.co/screenshots/DisparityMap-Fusiontable-about.png)
 ![Numberic ID](http://24p.co/screenshots/DisparityMap-NumbericID.png)
-## Data Entry
+
+#### Data Entry
 * Data that is money needs to have a "$" and the column must be formatted as text.
 * Data that is a percentage needs to have a "%" after the number and the column must be formatted as text
 ![Format as text](http://24p.co/screenshots/DisparityMap-FusionTable-FormatText.png)
