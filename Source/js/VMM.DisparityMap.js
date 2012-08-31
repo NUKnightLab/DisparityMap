@@ -230,6 +230,10 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			
 			VMM.master_config.DisparityMap	= config;
 			this.events						= config.events;
+			
+			if (config.debug) {
+				VMM.debug = true;
+			}
 		}
 		
 		/* CHECK HASH STATE
@@ -437,7 +441,15 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			trace("GET DATA");
 			
 			var fusion_url = 'http://tables.googlelabs.com/api/query?sql=SELECT * FROM ' + config.fusion_id +  '&jsonCallback=?';
-
+			
+			function getGVar(v) {
+				if (typeof v != 'undefined') {
+					return v;
+				} else {
+					return "";
+				}
+			}
+			
 			VMM.getJSON(config.shape_source, function(d) {
 				trace("COMMUNITY DATA LOADED");
 				
@@ -459,11 +471,24 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 							num			= 0,
 							j			= 0;
 							
+						//trace(fusion_data.table.rows[k]);
 						for(j = 0; j < fusion_data.table.cols.length; j++) {
 							community[fusion_data.table.cols[j].toLowerCase()] = fusion_data.table.rows[k][j];
 						}
-						num = [parseFloat(community.community_area) - 1];
-						data.communities[num].community.fusion = community;
+						
+						num = [parseFloat(getGVar(community.community_area)) - 1]; 
+						
+						if (num == "" || num > data.communities.length || isNaN(num)) {
+							trace("NO COMMUNITY AREA NUMBER OR NO CORRESPONDING COMMUNITY NUMBER IN shape_source json file")
+						} else {
+							
+							trace(isNaN(num));
+							data.communities[num].community.fusion = community;
+						}
+						
+						//num = [parseFloat(community.community_area) - 1];
+						
+						//data.communities[num].community.fusion = community;
 					}
 					VMM.fireEvent($main, config.events.data_ready);
 				});
@@ -473,16 +498,42 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 		
 		function prepareData() {
 			var i	= 0,
-				j	= 0;
+				j	= 0,
+				k	= 0,
+				m	= 0;
 				
 			for(i = 0; i < config.columns.length; i++) {
 				config.columns[i].uniqueid = "datanav-item-" + VMM.Util.unique_ID(5);
 				
+
 				if (data.communities[0].community.fusion[config.columns[i].column_name + "_rank"] > 0) {
 					trace("EXISTS");
 				} else {
 					trace("NEEDS RANK");
 					needs_rank.push(config.columns[i].column_name);
+				}
+			}
+			
+			// Cleanup numbers
+			for(k = 0; k < data.communities.length; k++) {
+				var community = data.communities[k].community,
+					prop;
+				
+				// Make Strings with Percentages to Numbers
+				for (prop in community.fusion) {
+					if (Object.prototype.hasOwnProperty.call(community.fusion, prop)) {
+						trace("PROP");
+						trace(community.fusion[prop]);
+						if (type.of(community.fusion[prop]) == "string") {
+							if (community.fusion[prop].match("%")) {
+								community.fusion[prop + "_percent"] = community.fusion[prop];
+								community.fusion[prop] = parseFloat(community.fusion[prop].replace("%", ""), 10);
+								
+							}
+						}
+						
+						trace(community.fusion[prop]);
+					}
 				}
 			}
 			
@@ -695,7 +746,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					has_percent		= true;
 					item_value		= Math.round(parseInt(community.fusion[column.column_name + "_percent"], 10));
 				} else {
-					item_value		= community.fusion[column.column_name]
+					item_value		= community.fusion[column.column_name];
 				}
 						
 				if (isNaN(item_rank)) {
