@@ -96,10 +96,14 @@ Extra information that is displayed in the popup but is not a ranking factor
 * `note` disclaimers or further discription. It's shown next to the title.
 
 ### Google Fusion
-`fusion_id` The numberic id of the fusion table you want to load
+* `fusion_id` The numberic id of the fusion table you want to load
 You can find the numeric id under `file > about`
 ![File About](http://24p.co/screenshots/DisparityMap-Fusiontable-about.png)
 ![Numberic ID](http://24p.co/screenshots/DisparityMap-NumbericID.png)
+## Data Entry
+* Data that is money needs to have a "$" and the column must be formatted as text.
+* Data that is a percentage needs to have a "%" after the number and the column must be formatted as text
+![Format as text](http://24p.co/screenshots/DisparityMap-FusionTable-FormatText.png)
 
 ### Shape Source
 `shape_source` The json file that contains the shape data.
