@@ -35,44 +35,32 @@
 			    var disparitymap_config = {
 					width:			"960",
 					height:			"600",
-					debug:			true,
-					fusion_id:		4887880, //4495912, //2295945, // 4495912
+					debug:			false,
+					fusion_id:		5244096,
 					shape_source:	'communities.json',
 					columns:	[
 						{
-							title:		"People in Poverty",
-							column_name:"people_in_poverty",
-							note:		"",
-							active:		false
-						},
-						{
 							title:		"Renter-Occupied Housing",
-							column_name:"renter-occupied_housing",
-							note:		"",
+							column_name:"renter_occupied_percent",
+							note:		"of occupied units",
 							active:		false
 						},
 						{
-							title:		"Cowded Housing",
-							column_name:"housing_crowded",
-							note:		"",
+							title:		"Crowded Housing",
+							column_name:"crowded_housing",
+							note:		"More than one person/room",
 							active:		false
 						},
 						{
-							title:		"Foreclosures in 2010",
-							column_name:"foreclosure_filing_2010",
+							title:		"Foreclosure rate (2010-11)",
+							column_name:"foreclosure_in_2010_and_2011_percent",
 							note:		"",
 							active:		false
-						},
-						{
-							title:		"Foreclosures in 2011",
-							column_name:"foreclosure_filing_2011",
-							note:		"",
-							active:		false
-						},
+						},						
 						{
 							title:		"Vacant Housing",
-							column_name:"vacant_housing",
-							note:		"",
+							column_name:"vacant_housing_percent",
+							note:		"of all housing units",
 							active:		false
 						}
 					],
