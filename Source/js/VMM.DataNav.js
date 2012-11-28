@@ -17,6 +17,10 @@ if(typeof VMM != 'undefined' && typeof VMM.DataNav == 'undefined') {
 				title:	"",
 				note:	""
 			},
+			titles_notes = {
+				title:			"Ranked By",
+				note:			"Note: Select filters to rank community areas from most to least disadvantaged."
+			},
 			constraint	= false,
 			unique_id	= "datanav-" + VMM.Util.unique_ID(5),
 			$layout		= parent,
@@ -38,6 +42,20 @@ if(typeof VMM != 'undefined' && typeof VMM.DataNav == 'undefined') {
 					messege:			"MESSEGE",
 					headline:			"HEADLINE",
 					resize:				"resize"
+				},
+				titles_notes: {
+					nav: {
+						title:			"Ranked By",
+						note:			"Note: Select filters to rank community areas from most to least disadvantaged."
+					},
+					list: {
+						title:			"Most Disadvantaged",
+						note:			"Note: Ranked by your selected criteria."
+					},
+					popup_rank: {
+						title:			"Ranked By",
+						note:			"Note: Scale represents how disadvantaged the community is."
+					}
 				},
 				colors: {
 					map: {
@@ -76,9 +94,12 @@ if(typeof VMM != 'undefined' && typeof VMM.DataNav == 'undefined') {
 		
 		/* PUBLIC FUNCTIONS
 		================================================== */
-		this.init = function(m) {
+		this.init = function(m, n) {
 			if ( m != null && m != "") {
 				meta = m;
+			}
+			if ( n != null && n != "") {
+				titles_notes = n;
 			}
 			build();
 		}
@@ -96,10 +117,10 @@ if(typeof VMM != 'undefined' && typeof VMM.DataNav == 'undefined') {
 				meta_note	= "";
 			
 			if (meta.title != "") {
-				meta_title	+= "<h3>" + meta.title + "</h3>";
+				meta_title	+= "<h3>" + titles_notes.title + "</h3>";
 			}
 			if (meta.note != "") {
-				meta_note	+= "<div class='datanav-note'>" + meta.note + "</div>";
+				meta_note	+= "<div class='datanav-note'>" + titles_notes.note + "</div>";
 			}
 			VMM.attachElement($layout, "");
 			$nav_container		= VMM.appendAndGetElement($layout, "<div>", "datanav-container");

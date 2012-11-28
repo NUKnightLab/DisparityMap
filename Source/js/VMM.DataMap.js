@@ -30,6 +30,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			$layout			= parent,
 			$datamap,
 			$datamap_mask,
+			$datamap_key,
 			$datamap_container;
 			
 		// CONFIG
@@ -64,7 +65,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 						min:			10
 					},
 					style_id:			"48820",
-					style:				"toner-background",
+					style:				"toner-lite",
 					width:				700,
 					height:				750
 				},
@@ -95,7 +96,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 		
 		/* PUBLIC FUNCTIONS
 		================================================== */
-		this.init = function(d) {
+		this.init = function(d, n) {
 			data = d;
 			build();
 		};
@@ -386,7 +387,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			map.addLayer(map_group);
 			
 			// MAP OPACITY
-			//map_layer.setOpacity(1);
+			//map_layer.setOpacity(.5);
 			
 			// MAP POSITION
 			map_pos.normal		= map.getCenter();
@@ -475,6 +476,9 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			//$datamap			= VMM.appendAndGetElement($layout, "<div>", "datamap");
 			$datamap_mask		= VMM.appendAndGetElement($layout, "<div>", "datamap-container-mask");
 			$datamap_container	= VMM.appendAndGetElement($datamap_mask, "<div>", "datamap-container");
+			$datamap_key		= "<div class='map-key'><div class='bar-graph'><div class='bar-main' style='width:100%'></div></div><div class='bar-range'><div class='bar-range-start'>Less Disadvantaged</div><div class='bar-range-end'>More Disadvantaged</div></div></div>";
+			
+			VMM.appendElement($layout, $datamap_key);
 			
 			VMM.Lib.attr($datamap_container, "id", unique_id);
 			VMM.Lib.width($datamap, config.map.width - 2);

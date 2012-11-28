@@ -38,6 +38,20 @@
 					debug:			false,
 					fusion_id:		5244096,
 					shape_source:	'communities.json',
+					titles_notes: {
+						nav: {
+							title:			"Ranked By",
+							note:			"Note: Select filters to rank community areas from most to least disadvantaged."
+						},
+						list: {
+							title:			"Most Disadvantaged",
+							note:			"Note: Ranked by your selected criteria."
+						},
+						popup_rank: {
+							title:			"Ranked By",
+							note:			"Note: Scale represents how disadvantaged the community is."
+						}
+					},
 					columns:	[
 						{
 							title:		"People in Poverty",
@@ -55,13 +69,15 @@
 							title:		"Average Test Score (ISAT)",
 							column_name:"isat_2010_average_composite_score",
 							note:		"(average composite score)",
-							active:		false
+							active:		false,
+							inverse: 	true
 						},
 						{
 							title:		"Jobs per 100 Residents",
 							column_name:"total_jobs",
 							note:		"",
-							active:		false
+							active:		false,
+							inverse: 	true
 						},
 						{
 							title:		"Crowded Housing",
@@ -86,7 +102,8 @@
 						{
 							title:		"Per Capita Income",
 							column_name:"per_capita_income",
-							note:		"/per person"
+							note:		"/per person",
+							money: 		true 
 						},
 						{
 							title:		"Aged Under 18 or Over 64",
@@ -100,7 +117,6 @@
 			<!-- END Disparity Map Embed -->
 			
 		</div>
-		
 		
 	</body>
 

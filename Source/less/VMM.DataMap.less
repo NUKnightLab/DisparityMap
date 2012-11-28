@@ -6,6 +6,32 @@
 ================================================== */
 .vmm-disparitymap {
 	.datamap {
+		.map-key {
+			position:			relative;
+			top:				-85px;
+			left:				10px;
+			padding: 			10px;
+			border: 			1px solid @color-line;
+			width: 				225px;
+			background-color: 	@color-base;
+			z-index: 99;
+			h4 {
+				font-size:		14px;
+				line-height:	14px;
+				color:			@color-dark-third;
+				margin-bottom:	5px;
+			}
+			.bar-graph {
+				margin-bottom:	2px;
+				height:			12px;
+				border: 		1px solid @color-line;
+				.bar-main {
+					.gradient(@color-base, @color-theme);
+					//border: 	1px solid @color-line;
+				}
+			}
+		}
+		
 		h3 {
 			font-weight:bold;
 		}
@@ -35,8 +61,9 @@
 					}
 					.label {
 						position:		relative;
-						top:			-7px;
+						top:			-5px;
 						margin-left:	5px;
+						font-size:		16px;
 					}
 				}
 				
@@ -46,6 +73,15 @@
 					margin-bottom:	@base-space/2;
 					padding:		@base-space/2;
 					.clearfix();
+					.popup-box-note {
+						font-size:		@base-font-small + 1;
+						font-style:		italic;
+						line-height:	@base-font-small + 2;
+						color:			@color-dark-fourth;
+						margin-bottom:	@base-space/2;
+						//margin-left:	5px;
+						//margin-right:	5px;
+					} 
 					.popup-box-column {
 						width:			50%;
 						float:			left;
@@ -63,7 +99,7 @@
 						width:		130px;
 						.border-radius(7px);
 						h4 {
-							margin-bottom:		10px;
+							margin-bottom:		5px;
 							font-size:			14px;
 							line-height:		14px;
 							small {
@@ -73,14 +109,29 @@
 							}
 							
 						}
+						h5 {
+							margin-top:		5px;
+							font-size:		11px;
+							line-height:	12px;
+							//color:			@color-dark-third;
+							small {
+								color:			@color-dark-third;
+							}
+						}
 						.popup-item-container {
 							position: relative;
 							padding:		5px;
 							.clearfix();
 							.bar-graph {
 								background-color: @color-line;
+								border: 1px solid @color-dark-fourth;
 								.bar-main {
-									background-color: @color-dark-fourth;
+									//border-right: 1px solid darken(#299837, 10%);
+									//background-color: #299837;
+									border-right: 1px solid darken(@color-dark-fourth, 10%);
+									background-color: @color-dark-third;
+									background-size:122px;
+									//.gradient-vertical(@color-dark-fourth, darken(@color-dark-fourth, 10%));
 								}
 							}
 							.item-title {
@@ -103,7 +154,10 @@
 							.bar-graph {
 								//background-color: lighten(@color-theme, 40%);
 								.bar-main {
+									background-color: @color-dark-third;
+									border-right: 1px solid darken(@color-dark-fourth, 10%);
 									//background-color: @color-theme;
+									//.gradient(@color-theme, #7F1711);
 								}
 							}
 						}
@@ -122,15 +176,30 @@
 						//background-color:	lighten(@color-theme, 33%);
 					}
 					.popup-box-item {
+						//background-color:	darken(@color-background-dark, 10%);
+						
+						margin-top:	0px;
 						h4 {
 							margin-bottom:		5px;
 							font-size:			16px;
-							line-height:		20px;
+							line-height:		16px;
 							small {
 								display:		block;
 								font-size:		11px;
 								line-height:	12px;
 								color:			@color-dark-third;
+							}
+						}
+						h5 {
+							margin-top:		0px;
+							font-size:		18px;
+							line-height:	18px;
+							//font-weight:	bold;
+							color:			@color-dark-third;
+							small {
+								font-size:	12px;
+								line-height:12px;
+								color:		@color-dark-third;
 							}
 						}
 						.popup-item-container {
@@ -147,6 +216,7 @@
 				}
 				.popup-filterbox {
 					background-color:	@color-background-dark;
+					//background-color:	darken(@color-background-dark, 10%);
 					.border-radius(7px);
 					.filter-number {
 						text-align:center;
@@ -157,12 +227,15 @@
 						.bar-graph {
 							//background-color: lighten(@color-theme, 40%);
 							.bar-main {
-								//background-color: @color-theme;
+								border-right: 1px solid darken(@color-theme, 10%);
+								background-color: @color-theme;
+								//.gradient-vertical(@color-theme, darken(@color-theme, 10%));
 							}
 						}
 					}
 					.popup-box-item {
 						background-color:	darken(@color-background-dark, 10%);
+						//background-color:	@color-background-dark;
 						h4 {
 							-webkit-hyphens:auto;
 							   -moz-hyphens:auto;

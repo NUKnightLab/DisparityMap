@@ -1,6 +1,6 @@
 {
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
-  "creatorBuild" : "6502",
+  "creatorBuild" : "7978",
   "files" : {
     "\/Source\/js\/Core\/Media\/VMM.MediaElement.js" : {
       "ignoreWasSetByUser" : 1,
@@ -11,7 +11,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.MediaElement-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Compiled\/housing.html" : {
       "ignoreWasSetByUser" : 0,
@@ -20,7 +20,7 @@
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/Compiled\/housing.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 8
+      "fileType" : 2048
     },
     "\/Compiled\/gfx\/leaflet\/zoom-out.png" : {
       "ignoreWasSetByUser" : 0,
@@ -31,7 +31,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/zoom-out.png",
       "initialSize" : 959,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/js\/Core\/Media\/VMM.TextElement.js" : {
       "ignoreWasSetByUser" : 1,
@@ -42,7 +42,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.TextElement-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/gfx\/chicagolandrace_bigbig.png" : {
       "ignoreWasSetByUser" : 0,
@@ -53,7 +53,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Source\/gfx\/chicagolandrace_bigbig.png",
       "initialSize" : 16799025,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/js\/Core\/VMM.Browser.js" : {
       "ignoreWasSetByUser" : 0,
@@ -64,7 +64,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.Browser-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/Variables.less" : {
       "ignoreWasSetByUser" : 0,
@@ -76,7 +76,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/Variables.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/less\/VMM.Tooltip.less" : {
       "ignoreWasSetByUser" : 0,
@@ -88,16 +89,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.Tooltip.css",
       "strictImports" : 0,
-      "fileType" : 0
-    },
-    "\/Compiled\/css\/disparitymap.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Compiled\/css\/disparitymap.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 13
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Compiled\/gfx\/leaflet\/popup-close.png" : {
       "ignoreWasSetByUser" : 0,
@@ -108,7 +101,16 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/popup-close.png",
       "initialSize" : 1125,
-      "fileType" : 10
+      "fileType" : 8192
+    },
+    "\/Compiled\/css\/disparitymap.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/Compiled\/css\/disparitymap.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/Compiled\/gfx\/chicagolandrace_bigbig.png" : {
       "ignoreWasSetByUser" : 0,
@@ -119,7 +121,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/chicagolandrace_bigbig.png",
       "initialSize" : 16799025,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/js\/Core\/Library\/Leaflet.js" : {
       "ignoreWasSetByUser" : 1,
@@ -130,7 +132,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Library\/Leaflet-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/VMM.DataList.less" : {
       "ignoreWasSetByUser" : 0,
@@ -142,7 +144,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.DataList.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/less\/GFX.less" : {
       "ignoreWasSetByUser" : 0,
@@ -154,7 +157,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/GFX.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/less\/VMM.Leaflet.less" : {
       "ignoreWasSetByUser" : 1,
@@ -166,7 +170,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.Leaflet.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/Core\/Library\/bootstrap-tooltip.js" : {
       "ignoreWasSetByUser" : 1,
@@ -177,7 +182,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Library\/bootstrap-tooltip-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Compiled\/index.old.html" : {
       "ignoreWasSetByUser" : 0,
@@ -186,7 +191,7 @@
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/Compiled\/index.old.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 8
+      "fileType" : 2048
     },
     "\/Source\/less\/Mixins.less" : {
       "ignoreWasSetByUser" : 0,
@@ -198,7 +203,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/Mixins.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/VMM.DataNav.js" : {
       "ignoreWasSetByUser" : 0,
@@ -209,7 +215,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/VMM.DataNav-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/Library\/Embed.LoadLib.js" : {
       "ignoreWasSetByUser" : 1,
@@ -220,29 +226,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Library\/Embed.LoadLib-min.js",
-      "fileType" : 5
-    },
-    "\/Source\/js\/VMM.DisparityMap.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 1,
-      "inputAbbreviatedPath" : "\/Source\/js\/VMM.DisparityMap.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/Compiled\/js\/disparitymap.js",
-      "fileType" : 5
-    },
-    "\/Source\/js\/Chart\/VMM.Chart.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Source\/js\/Chart\/VMM.Chart.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/Source\/js\/Chart\/VMM.Chart-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Compiled\/js\/disparitymap.js" : {
       "ignoreWasSetByUser" : 0,
@@ -253,7 +237,29 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/js\/disparitymap-min.js",
-      "fileType" : 5
+      "fileType" : 64
+    },
+    "\/Source\/js\/VMM.DisparityMap.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 1,
+      "inputAbbreviatedPath" : "\/Source\/js\/VMM.DisparityMap.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/Compiled\/js\/disparitymap.js",
+      "fileType" : 64
+    },
+    "\/Source\/js\/Chart\/VMM.Chart.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/Source\/js\/Chart\/VMM.Chart.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/Source\/js\/Chart\/VMM.Chart-min.js",
+      "fileType" : 64
     },
     "\/Compiled\/gfx\/dot_density.png" : {
       "ignoreWasSetByUser" : 0,
@@ -264,7 +270,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/dot_density.png",
       "initialSize" : 203451,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Compiled\/gfx\/leaflet\/marker-shadow.png" : {
       "ignoreWasSetByUser" : 0,
@@ -275,7 +281,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/marker-shadow.png",
       "initialSize" : 1649,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Compiled\/gfx\/leaflet\/marker.png" : {
       "ignoreWasSetByUser" : 0,
@@ -286,7 +292,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/marker.png",
       "initialSize" : 2519,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/js\/Core\/VMM.Util.js" : {
       "ignoreWasSetByUser" : 0,
@@ -297,7 +303,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.Util-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/VMM.DisparityMap.IE8.less" : {
       "ignoreWasSetByUser" : 0,
@@ -309,7 +315,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/css\/disparitymap-ie8.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Compiled\/js\/disparitymap-embed.js" : {
       "ignoreWasSetByUser" : 0,
@@ -320,7 +327,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/js\/disparitymap-embed-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/VMM.DataMap.js" : {
       "ignoreWasSetByUser" : 0,
@@ -331,7 +338,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/VMM.DataMap-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/VMM.Date.js" : {
       "ignoreWasSetByUser" : 1,
@@ -342,7 +349,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.Date-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/VMM.Library.js" : {
       "ignoreWasSetByUser" : 0,
@@ -353,7 +360,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.Library-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/Typography.less" : {
       "ignoreWasSetByUser" : 0,
@@ -365,7 +372,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/Typography.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/less\/VMM.DataNav.less" : {
       "ignoreWasSetByUser" : 0,
@@ -377,7 +385,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.DataNav.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/Core\/Slider\/VMM.DragSlider.js" : {
       "ignoreWasSetByUser" : 1,
@@ -388,7 +397,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Slider\/VMM.DragSlider-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/Library\/jQuery\/easing.js" : {
       "ignoreWasSetByUser" : 1,
@@ -399,7 +408,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Library\/jQuery\/easing-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/VMM.DisparityMap.Core.less" : {
       "ignoreWasSetByUser" : 0,
@@ -411,7 +420,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.DisparityMap.Core.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/Core\/Slider\/VMM.Slider.Slide.js" : {
       "ignoreWasSetByUser" : 1,
@@ -422,18 +432,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Slider\/VMM.Slider.Slide-min.js",
-      "fileType" : 5
-    },
-    "\/Source\/js\/Core\/Media\/VMM.ExternalAPI.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.ExternalAPI.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.ExternalAPI-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/less\/VMM.DataMap.less" : {
       "ignoreWasSetByUser" : 0,
@@ -445,7 +444,19 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/VMM.DataMap.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/Source\/js\/Core\/Media\/VMM.ExternalAPI.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.ExternalAPI.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.ExternalAPI-min.js",
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/VMM.js" : {
       "ignoreWasSetByUser" : 0,
@@ -456,7 +467,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Compiled\/gfx\/leaflet\/zoom-in.png" : {
       "ignoreWasSetByUser" : 0,
@@ -467,7 +478,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/zoom-in.png",
       "initialSize" : 963,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/less\/VMM.DisparityMap.less" : {
       "ignoreWasSetByUser" : 0,
@@ -479,7 +490,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/css\/disparitymap.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/less\/Font.Default.less" : {
       "ignoreWasSetByUser" : 0,
@@ -491,7 +503,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/Font.Default.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/VMM.DataList.js" : {
       "ignoreWasSetByUser" : 0,
@@ -502,7 +515,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/VMM.DataList-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/Slider\/VMM.Slider.js" : {
       "ignoreWasSetByUser" : 1,
@@ -513,7 +526,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Slider\/VMM.Slider-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/Media\/VMM.MediaType.js" : {
       "ignoreWasSetByUser" : 1,
@@ -524,7 +537,16 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.MediaType-min.js",
-      "fileType" : 5
+      "fileType" : 64
+    },
+    "\/Compiled\/css\/disparitymap-ie8.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/Compiled\/css\/disparitymap-ie8.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/Source\/js\/Core\/VMM.LoadLib.js" : {
       "ignoreWasSetByUser" : 0,
@@ -535,16 +557,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.LoadLib-min.js",
-      "fileType" : 5
-    },
-    "\/Compiled\/css\/disparitymap-ie8.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Compiled\/css\/disparitymap-ie8.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 13
+      "fileType" : 64
     },
     "\/Source\/js\/VMM.DisparityMap.Embed.js" : {
       "ignoreWasSetByUser" : 0,
@@ -555,7 +568,7 @@
       "outputStyle" : 0,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/js\/disparitymap-embed.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/gfx\/dot_density.png" : {
       "ignoreWasSetByUser" : 0,
@@ -566,7 +579,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Source\/gfx\/dot_density.png",
       "initialSize" : 203451,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Compiled\/gfx\/leaflet\/layers.png" : {
       "ignoreWasSetByUser" : 0,
@@ -577,7 +590,7 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/Compiled\/gfx\/leaflet\/layers.png",
       "initialSize" : 3945,
-      "fileType" : 10
+      "fileType" : 8192
     },
     "\/Source\/js\/Core\/VMM.FileExtention.js" : {
       "ignoreWasSetByUser" : 0,
@@ -588,7 +601,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.FileExtention-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Source\/js\/Core\/Library\/AES.js" : {
       "ignoreWasSetByUser" : 1,
@@ -599,7 +612,7 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Library\/AES-min.js",
-      "fileType" : 5
+      "fileType" : 64
     },
     "\/Compiled\/index.html" : {
       "ignoreWasSetByUser" : 0,
@@ -608,7 +621,7 @@
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/Compiled\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 8
+      "fileType" : 2048
     },
     "\/Source\/less\/Reset.less" : {
       "ignoreWasSetByUser" : 0,
@@ -620,7 +633,8 @@
       "shouldRunBless" : 0,
       "outputAbbreviatedPath" : "\/Source\/css\/Reset.css",
       "strictImports" : 0,
-      "fileType" : 0
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/Source\/js\/Core\/Media\/VMM.Media.js" : {
       "ignoreWasSetByUser" : 1,
@@ -631,167 +645,184 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.Media-min.js",
-      "fileType" : 5
+      "fileType" : 64
     }
   },
   "manualImportLinks" : [
 
   ],
   "projectSettings" : {
-    "hamlNoEscapeInAttributes" : false,
+    "hamlNoEscapeInAttributes" : 0,
     "lessOutputStyle" : 1,
     "hamlAutoOutputPathReplace2" : "",
     "draggedImportConcatenationStyle" : 1,
     "jadeAutoOutputPathStyle" : 0,
-    "hamlEscapeHTMLCharacters" : false,
-    "javascriptAutoOutputPathStyle" : 0,
+    "hamlEscapeHTMLCharacters" : 0,
+    "javascriptAutoOutputPathStyle" : 2,
     "hamlOutputFormat" : 2,
     "stylusAutoOutputPathReplace1" : "stylus",
-    "lessStrictImports" : false,
+    "lessStrictImports" : 0,
     "sassAutoOutputPathStyle" : 2,
     "stylusAutoOutputPathReplace2" : "css",
     "lessAutoOutputPathStyle" : 2,
     "genericWebpageFileExtensionsString" : "html, xhtml, htm, shtml, shtm, php, jsp, asp, aspx, erb, ctp",
-    "coffeeMinifyOutput" : true,
+    "coffeeMinifyOutput" : 1,
     "javascriptOutputSuffix" : "-min",
-    "stylusLineNumbers" : false,
     "jadeOutputStyle" : 0,
     "coffeeAutoOutputPathStyle" : 0,
+    "autoSyncProjectSettingsFile" : 1,
     "lessAutoOutputPathReplace1" : "less",
     "jadeAutoOutputPathReplace1" : "",
     "lessAutoOutputPathRelativePath" : "..\/css",
     "hamlAutoOutputPathRelativePath" : "",
     "jsCheckerReservedNamesString" : "",
     "javascriptOutputStyle" : 1,
-    "sassDebugStyle" : 0,
+    "stylusDebugStyle" : 0,
+    "hamlUseCDATA" : 0,
     "hamlAutoOutputPathStyle" : 0,
+    "sassDebugStyle" : 0,
     "hamlOutputStyle" : 0,
-    "stylusFirebug" : false,
-    "jsCheckerIndent" : 4,
     "stylusAutoOutputPathRelativePath" : "..\/css",
+    "jsCheckerIndent" : 4,
     "lessAutoOutputPathReplace2" : "css",
     "jadeAutoOutputPathReplace2" : "",
-    "shouldRunBless" : false,
+    "shouldRunBless" : 0,
     "stylusAutoOutputPathStyle" : 2,
-    "coffeeCheckOutputStyle" : 1,
+    "coffeeCheckOutputStyle" : 0,
+    "slimOutputStyle" : 1,
     "javascriptSyntaxCheckerStyle" : 0,
     "sassAutoOutputPathReplace1" : "sass",
+    "slimAutoOutputPathReplace1" : "",
     "sassOutputStyle" : 0,
     "coffeeAutoOutputPathRelativePath" : "",
+    "slimCompileOnly" : 0,
+    "slimLogicless" : 0,
     "uglifyIndent" : 4,
     "jadeAutoOutputPathRelativePath" : "",
-    "hamlUseUnixNewlines" : false,
+    "hamlUseUnixNewlines" : 0,
     "hamlAutoOutputPathReplace1" : "",
     "javascriptAutoOutputPathReplace1" : "",
     "stylusOutputStyle" : 0,
     "javascriptAutoOutputPathReplace2" : "",
     "sassAutoOutputPathRelativePath" : "..\/css",
     "coffeeAutoOutputPathReplace1" : "",
-    "hamlUseDoubleQuotes" : false,
+    "hamlUseDoubleQuotes" : 0,
     "coffeeAutoOutputPathReplace2" : "",
     "uglifyReservedNamesString" : "",
     "jsHintFlags" : {
-      "onecase" : false,
-      "immed" : false,
-      "debug" : false,
-      "evil" : false,
-      "strict" : false,
-      "multistr" : false,
-      "wsh" : false,
-      "couch" : false,
-      "laxbreak" : false,
-      "rhino" : false,
-      "globalstrict" : false,
-      "supernew" : false,
-      "laxcomma" : false,
-      "asi" : false,
-      "es5" : false,
-      "scripturl" : false,
-      "dojo" : false,
-      "bitwise" : true,
-      "eqeqeq" : false,
-      "shadow" : false,
-      "expr" : false,
-      "noarg" : true,
-      "newcap" : false,
-      "forin" : false,
-      "regexdash" : false,
-      "node" : false,
-      "browser" : true,
-      "eqnull" : true,
-      "mootools" : false,
-      "iterator" : false,
-      "undef" : true,
-      "latedef" : true,
-      "nonstandard" : false,
-      "trailing" : false,
-      "jquery" : true,
-      "loopfunc" : false,
-      "boss" : true,
-      "nonew" : false,
-      "funcscope" : false,
-      "regexp" : true,
-      "lastsemic" : false,
-      "smarttabs" : false,
-      "devel" : false,
-      "esnext" : false,
-      "sub" : false,
-      "curly" : true,
-      "prototypejs" : false,
-      "proto" : false,
-      "plusplus" : false,
-      "noempty" : false
+      "onecase" : 0,
+      "immed" : 0,
+      "debug" : 0,
+      "evil" : 0,
+      "strict" : 0,
+      "multistr" : 0,
+      "wsh" : 0,
+      "couch" : 0,
+      "laxbreak" : 0,
+      "rhino" : 0,
+      "globalstrict" : 0,
+      "supernew" : 0,
+      "laxcomma" : 0,
+      "asi" : 0,
+      "es5" : 0,
+      "scripturl" : 0,
+      "dojo" : 0,
+      "bitwise" : 1,
+      "eqeqeq" : 0,
+      "shadow" : 0,
+      "expr" : 0,
+      "noarg" : 1,
+      "newcap" : 0,
+      "forin" : 0,
+      "regexdash" : 0,
+      "node" : 0,
+      "browser" : 1,
+      "eqnull" : 1,
+      "mootools" : 0,
+      "iterator" : 0,
+      "undef" : 1,
+      "latedef" : 1,
+      "nonstandard" : 0,
+      "trailing" : 0,
+      "jquery" : 1,
+      "loopfunc" : 0,
+      "boss" : 1,
+      "nonew" : 0,
+      "funcscope" : 0,
+      "regexp" : 1,
+      "lastsemic" : 0,
+      "smarttabs" : 0,
+      "devel" : 0,
+      "esnext" : 0,
+      "sub" : 0,
+      "curly" : 1,
+      "prototypejs" : 0,
+      "proto" : 0,
+      "plusplus" : 0,
+      "noempty" : 0
     },
     "coffeeOutputStyle" : 0,
+    "slimAutoOutputPathRelativePath" : "",
     "jsLintFlags" : {
-      "white" : true,
-      "bitwise" : false,
-      "regexp" : false,
-      "vars" : true,
-      "anon" : true,
-      "sub" : false,
-      "stupid" : true,
-      "nomen" : true,
-      "unparam" : false,
-      "newcap" : true,
-      "'continue'" : false,
-      "sloppy" : false,
-      "fragment" : true,
-      "undef" : true,
-      "es5" : false,
-      "browser" : true,
-      "widget" : false,
-      "properties" : false,
-      "forin" : false,
-      "plusplus" : true,
-      "debug" : false,
-      "eqeq" : true,
-      "confusion" : false,
-      "evil" : false,
-      "on" : true,
-      "cap" : true,
-      "windows" : false,
-      "devel" : false,
-      "rhino" : false,
-      "node" : false,
-      "css" : true
+      "white" : 1,
+      "bitwise" : 0,
+      "regexp" : 0,
+      "vars" : 1,
+      "anon" : 1,
+      "sub" : 0,
+      "stupid" : 1,
+      "nomen" : 1,
+      "unparam" : 0,
+      "newcap" : 1,
+      "'continue'" : 0,
+      "sloppy" : 0,
+      "fragment" : 1,
+      "undef" : 1,
+      "es5" : 0,
+      "browser" : 1,
+      "widget" : 0,
+      "properties" : 0,
+      "forin" : 0,
+      "plusplus" : 1,
+      "debug" : 0,
+      "eqeq" : 1,
+      "confusion" : 0,
+      "evil" : 0,
+      "on" : 1,
+      "cap" : 1,
+      "windows" : 0,
+      "devel" : 0,
+      "rhino" : 0,
+      "node" : 0,
+      "css" : 1
     },
     "uglifyFlags" : {
-      "no-mangle-functions" : false,
-      "no-mangle" : false,
-      "no-copyright" : true,
-      "no-dead-code" : false,
-      "inline-script" : false,
-      "ascii" : false,
-      "mangle-toplevel" : false,
-      "unsafe" : false,
-      "no-seqs" : true,
-      "beautify" : false,
-      "lift-vars" : false,
-      "no-squeeze" : false
+      "no-mangle-functions" : 0,
+      "no-mangle" : 0,
+      "no-copyright" : 1,
+      "no-dead-code" : 0,
+      "inline-script" : 0,
+      "ascii" : 0,
+      "unsafe" : 0,
+      "mangle-toplevel" : 0,
+      "no-seqs" : 1,
+      "beautify" : 0,
+      "lift-vars" : 0,
+      "consolidate-primitive-values" : 0,
+      "no-squeeze" : 0
     },
     "sassAutoOutputPathReplace2" : "css",
-    "jadeCompileDebug" : true,
-    "javascriptAutoOutputPathRelativePath" : ""
+    "slimAutoOutputPathReplace2" : "",
+    "jadeCompileDebug" : 1,
+    "slimRailsCompatible" : 0,
+    "lessDebugStyle" : 0,
+    "javascriptAutoOutputPathRelativePath" : "",
+    "slimAutoOutputPathStyle" : 0
+  },
+  "projectAttributes" : {
+    "bourbonEnabled" : 0,
+    "displayValue" : "DisparityMap",
+    "displayValueWasSetByUser" : 1,
+    "compassEnabled" : 0
   }
 }

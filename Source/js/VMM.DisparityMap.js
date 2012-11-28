@@ -61,7 +61,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			map_id = 			"#disparitymap";
 		}
 		
-		version = 					"2.0";
+		version = 					"2.5";
 		
 		trace("DISPARITY MAP VERSION " + version);
 		
@@ -94,18 +94,36 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			id: 					map_id,
 			fusion_id:				2295945,
 			shape_source:			"communities.json",
+			titles_notes: {
+				nav: {
+					title:			"Ranked By",
+					note:			"Note: Select filters to rank community areas from most to least disadvantaged."
+				},
+				list: {
+					title:			"Most Disadvantaged",
+					note:			"Note: Ranked by your selected criteria."
+				},
+				popup_rank: {
+					title:			"Ranked By",
+					note:			"Note: Scale represents how disadvantaged the community is."
+				}
+			},
 			columns: [
 				{
 					title:			"People in Poverty",
 					column_name:	"people_in_poverty",
 					note:			"",
-					active:			false
+					active:			false,
+					high: 			0,
+					low: 			0
 				},
 				{
 					title:			"Vacant Housing",
 					column_name:	"vacant_housing",
 					note:			"",
-					active:			false
+					active:			false,
+					high: 			0,
+					low: 			0
 				}
 			],
 			infobox: [
@@ -119,7 +137,8 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				fusion:				{},
 				communities:		{},
 				columns:			[],
-				infobox:			[]
+				infobox:			[],
+				total_ranks: 		77
 			},
 			type: 					"disparitymap",
 			touch:					false,
@@ -152,7 +171,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					min:			10
 				},
 				style_id:			"48820",
-				style:				"toner-lines",
+				style:				"toner-lite",
 				width:				700,
 				height:				750
 			},
@@ -163,16 +182,6 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				note:				"Note: Ranked by filters above from most disadvantaged to least <br />"
 			},
 			map_key:				"<ul class='disparitymap-key'><li class='label race-white'>white</li><li class='label race-black'>black</li><li class='label race-hispanic'>hispanic</li><li class='label race-asian'>asian</li><li class='label race-other'>other</li></ul>",
-			list: {
-				nav: {
-					title:			"Most Disadvantaged",
-					note:			"Note: Ranked by your selected criteria."
-				},
-				main: {
-					title:			"Community Rank",
-					note:			"Note: Ranked by your selected criteria, from most to least disadvantaged."
-				}	
-			},
 			hash_bookmark:			false,
 			api_keys: {
 				leaflet:			"f5d9e22a178b4b2cb7ff16422a0a7666",
@@ -225,8 +234,8 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			config.data.columns	= config.columns;
 			config.data.infobox	= config.infobox;
 			
-			config.list.nav.note = config.list.nav.note + config.map_key;
-			
+			config.titles_notes.nav.note = config.titles_notes.nav.note + config.map_key;
+			config.titles_notes.list.note = config.titles_notes.list.note + config.map_key;
 			
 			VMM.master_config.DisparityMap	= config;
 			this.events						= config.events;
@@ -336,6 +345,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			}
 			
 			$grid_top		= VMM.appendAndGetElement($main, "<div>", "vmm-grid-row", "");
+			$grid_middle	= VMM.appendAndGetElement($main, "<div>", "vmm-grid-row", "");
 			$grid_bottom	= VMM.appendAndGetElement($main, "<div>", "vmm-grid-row", "");
 			$feedback		= VMM.appendAndGetElement($main, "<div>", "feedback", "");
 			
@@ -425,13 +435,17 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			/* GET DATA
 			================================================== */
 			if (VMM.Browser.browser == "Explorer" || VMM.Browser.browser == "MSIE") {
-				if ( parseInt(VMM.Browser.version, 10) <= 7 ) {
+				if ( parseInt(VMM.Browser.version, 10) <= 8 ) {
 					ie7 = true;
 				}
 			}
 			
+			if (!ie7) {
+				getData();
+			} else {
+				VMM.fireEvent($main, config.events.messege, "Internet Explorer 8 and below is not supported. Please use a modern browser.");
+			}
 			
-			getData();
 		};
 		
 		
@@ -508,7 +522,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					trace("EXISTS");
 				} else {
 					trace("NEEDS RANK");
-					needs_rank.push(config.columns[i].column_name);
+					needs_rank.push(config.columns[i]);
 				}
 			}
 			
@@ -538,6 +552,40 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				
 				community.rank_average = i;
 			}
+			
+			
+			// GET HIGH AND LOWS
+			trace("HIGH AND LOW");
+			for(i = 0; i < config.columns.length; i++) {
+				
+				config.columns[i].high	= data.communities[0].community.fusion[config.columns[i].column_name];
+				config.columns[i].low	= data.communities[0].community.fusion[config.columns[i].column_name];
+				
+				for(k = 0; k < data.communities.length; k++) {
+					var item_value = 0;
+					
+					if(typeof data.communities[k].community.fusion[config.columns[i].column_name + "_percent"] != 'undefined') {
+						item_value		= Math.round(parseInt(data.communities[k].community.fusion[config.columns[i].column_name + "_percent"], 10));
+					} else {
+						item_value		= data.communities[k].community.fusion[config.columns[i].column_name];
+					}
+					
+					item_value = parseInt(item_value);
+					
+					if (item_value < config.columns[i].low) {
+						config.columns[i].low = item_value;
+					}
+					if (item_value > config.columns[i].high) {
+						config.columns[i].high = item_value;
+					}
+					
+				}
+				
+				trace(config.columns[i].high);
+				trace(config.columns[i].low);
+			}
+			
+			
 		}
 		
 		function sortData(sort_array, sort_by) {
@@ -649,21 +697,22 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					
 				for(i = 0; i < needs_rank.length; i++) {
 					var is_rank_percent = false,
-						is_money		= false;
+						is_money		= false,
+						is_inverse		= false;
 					
 					function sortby_rank(a, b) {
-						var a1= a.community.fusion[needs_rank[i]], b1= b.community.fusion[needs_rank[i]];
+						var a1= a.community.fusion[needs_rank[i].column_name], b1= b.community.fusion[needs_rank[i].column_name];
 					    if(a1== b1) return 0;
 					    return a1> b1? 1: -1;
 					}
 					function sortby_percentrank(a, b) {
-						var a1= a.community.fusion[needs_rank[i] + "_percentrank"], b1= b.community.fusion[needs_rank[i] + "_percentrank"];
+						var a1= a.community.fusion[needs_rank[i].column_name + "_percentrank"], b1= b.community.fusion[needs_rank[i].column_name + "_percentrank"];
 					    if(a1== b1) return 0;
 					    return a1> b1? 1: -1;
 					}
 					
 					function sortby_moneyrank(a, b) {
-						var a1= a.community.fusion[needs_rank[i] + "_moneyrank"], b1= b.community.fusion[needs_rank[i] + "_moneyrank"];
+						var a1= a.community.fusion[needs_rank[i].column_name + "_moneyrank"], b1= b.community.fusion[needs_rank[i].column_name + "_moneyrank"];
 					    if(a1== b1) return 0;
 					    return a1> b1? 1: -1;
 					}
@@ -671,31 +720,42 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					// Fix numbers if it's a percentage to make sure sort is correct
 					for(k = 0; k < data.communities.length; k++) {
 						var community = data.communities[k].community;
-						if(typeof community.fusion[needs_rank[i] + "_percent"] != 'undefined') {
+						if(typeof community.fusion[needs_rank[i].column_name + "_percent"] != 'undefined') {
 							is_rank_percent = true;
-							community.fusion[needs_rank[i] + "_percentrank"] = 100 - community.fusion[needs_rank[i]];
-						} else if (type.of(community.fusion[needs_rank[i]]) == "string") {
-							if (community.fusion[needs_rank[i]].match("$")) {
+							community.fusion[needs_rank[i].column_name + "_percentrank"] = 100 - community.fusion[needs_rank[i].column_name];
+						} else if (type.of(community.fusion[needs_rank[i].column_name]) == "string") {
+							if (community.fusion[needs_rank[i].column_name].match("$")) {
 								is_money = true;
-								community.fusion[needs_rank[i] + "_moneyrank"] = parseFloat(community.fusion[needs_rank[i]].replace("$", "").replace(",", ""));
+								community.fusion[needs_rank[i].column_name + "_moneyrank"] = parseFloat(community.fusion[needs_rank[i].column_name].replace("$", "").replace(",", ""));
 							}
 						}
 					}
 					
+					if(typeof needs_rank[i].inverse != 'undefined') {
+						is_inverse = needs_rank[i].inverse;
+					}
+					
+					trace(needs_rank[i].column_name);
 					if (is_rank_percent) {
 						trace("SORT BY PERCENT RANK");
 						data.communities.sort(sortby_percentrank);
+					} else if (is_inverse) {
+						trace("IS INVERSE");
+						data.communities.sort(sortby_rank);
+						//data.communities.reverse();
 					} else if (is_money) {
+						trace("SORT BY MONEY");
 						data.communities.sort(sortby_moneyrank);
 						data.communities.reverse();
-					} else {
+					}  else {
+						trace("NORMAL SORT");
 						data.communities.sort(sortby_rank);
 					}
 					
 					
 					for(j = 0; j < data.communities.length; j++) {
 						var community = data.communities[j].community;
-						community.fusion[needs_rank[i] + "_rank"] = (j + 1);
+						community.fusion[needs_rank[i].column_name + "_rank"] = (j + 1);
 					}
 					
 				}
@@ -763,15 +823,17 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				}
 			},
 			
-			popupItem: function(community, column) {
+			popupItem: function(community, column, needs_graph) {
 				var item			= "",
 					has_percent		= false,
 					item_value		= "",
+					item_display_value = "",
 					item_rank		= Math.round(parseInt(community.fusion[column.column_name + "_rank"], 10)),
 					item_rank_class = "",
-					is_money		= false;
+					is_money		= false,
+					inverse			= false,
+					rank_size		= "";
 				
-						
 				if(typeof community.fusion[column.column_name + "_percent"] != 'undefined') {
 					has_percent		= true;
 					item_value		= Math.round(parseInt(community.fusion[column.column_name + "_percent"], 10));
@@ -779,15 +841,26 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					item_value		= community.fusion[column.column_name];
 					//trace(item_value);
 					if (type.of(item_value) == "string") {
+						trace("IS STRING");
 						//trace(item_value);
 						if (item_value.match("$")) {
 							is_money = true;
-							item_value = parseInt(item_value.replace("$", "").replace(",", ""));
+							trace("IS MONEY");
+							//item_value = parseInt(item_value.replace("$", "").replace(",", ""));
+							
 						}
 					}
 					
 				}
-						
+				
+				if(typeof column.money != 'undefined') {
+					is_money = true;
+				}
+				
+				if(typeof column.inverse != 'undefined') {
+					inverse = column.inverse;
+				}
+				
 				if (isNaN(item_rank)) {
 					item_rank		= 0;
 				}
@@ -796,40 +869,107 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					item_rank_class += " top-rank";
 				}
 				item			+=  "<div class='popup-box-item" + item_rank_class + "'>";
-				item			+=  "<div class='popup-item-container'>";	
+				item			+=  	"<div class='popup-item-container'>";	
 				//TITLE
-				item			+= "<div class='item-title'>";
-				item			+= "<div class='label-column'>";
-				item			+= "<span class='label rank" + item_rank_class + "'>" + item_rank + "<span class='ordinal'>" + VMM.Util.ordinal(item_rank) + "</span></span>";
-				item			+= "</div>";
-				item			+= "<div class='title-column'>";
-				item			+= "<h4>" + column.title + "<small> " + column.note + "</small></h4>";
-				item			+= "</div>";
-				item			+= "</div>";
-						
-				// BAR CHART
+				item			+= 			"<div class='item-title'>";
+				//item			+= 				"<h4>" + column.title + "</h4>";
+				item			+= 				"<h4>" + column.title + "<small> " + column.note + "</small></h4>";
+				/*
+				item			+= 				"<div class='label-column'>";
+				item			+= 					"<span class='label rank" + item_rank_class + "'>" + item_rank + "<span class='ordinal'>" + VMM.Util.ordinal(item_rank) + "</span></span>";
+				item			+= 				"</div>";
+				item			+= 				"<div class='title-column'>";
+				//item			+= 					"<h4>" + column.title + "<small> " + column.note + "</small></h4>";
+				item			+= 					"<h4>" + column.title + "</h4>";
+				item			+= 				"</div>";
+				*/
+				item			+= 			"</div>";
+					
+				// NUMBER VALUE
 				if (has_percent) {
-					item		+= "<div class='bar-graph'>";
-					item		+= "<span class='bar-main' style='width:" + item_value + "%'>";
-					item		+= "<span class='bar-text'>";
-					item		+= "<p>";
-					item		+= item_value + "%";
-					item		+= "</p>";
-					item		+= "</span>";
-					item		+= "</span>";
-					item		+= "</div>";
+					item_display_value		= item_value + "%";
+					
 				} else {
-					item		+= "<div class='filter-number'>";
 					if (is_money) {
-						item		+= "$" + VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+						trace("IS MONEY $$$$")
+						item_display_value	= "$" + VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+						trace(item_display_value);
 					} else {
-						item		+= VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
+						item_display_value	= VMM.Util.niceNumber(Math.round(parseInt((item_value * 100), 10)) / 100);
 					}
+				}
+				
+				// RANK STAT
+				if (needs_graph) {
+					// RANK SIZE BY RANK
+					//rank_size	= 100 - ((item_rank / config.data.total_ranks) * 100);
+					
+					// RANK SIZE BY VALUE
+					if (inverse) {
+						rank_size	= ((column.high - item_value) / (column.high - column.low)) * 100;
+					} else {
+						rank_size	= ((item_value - column.low) / (column.high - column.low)) * 100;
+					}
+					
+					
+					// IF ITS INVERSE
+					
+				
+					item		+= "<div class='bar-graph'>";
+					item		+= 		"<div class='bar-main' style='width:" + rank_size + "%'>";
+					/*
+					item		+= 			"<span class='bar-text'>";
+					item		+= 				"<p>";
+					item		+= 					item_display_value;
+					//item		+= 					item_rank + "<span class='ordinal'>" + VMM.Util.ordinal(item_rank) + "</span>";
+					item		+= 				"</p>";
+					item		+= 			"</span>";
+					*/
+					if (rank_size < 33) {
+						item		+= 		"<div class='bar-range-value-left' style='left:" + rank_size + "%'>";
+						item		+= 			item_display_value;
+						//item		+= 			item_rank + "<span class='ordinal'>" + VMM.Util.ordinal(item_rank) + "</span>";
+						item		+= 		"</div>";
+					} else {
+						item		+= 		"<div class='bar-range-value-right' style='right:" + (100-rank_size) + "%'>";
+						item		+= 			item_display_value;
+						//item		+= 			item_rank + "<span class='ordinal'>" + VMM.Util.ordinal(item_rank) + "</span>";
+						item		+= 		"</div>";
+					}
+					item		+= 		"</div>";
+					item		+= "</div>";
+					
+					item		+= "<div class='bar-range'>";
+					item		+= 		"<div class='bar-range-start'>";
+					if (inverse) {
+						item	+= 			column.high;
+					} else {
+						item	+= 			column.low;
+					}
+					if (has_percent) {
+						item	+= 			"%";
+					} 
+					item		+= 		"</div>";
+					item		+= 		"<div class='bar-range-end'>";
+					if (inverse) {
+						item	+= 			column.low;
+					} else {
+						item	+= 			column.high;
+					}
+					if (has_percent) {
+						item	+= 			"%";
+					} 
+					item		+= 		"</div>";
+					
+					item		+= "</div>";
+					
+				} else {
+					item		+= "<div class='filter-number'>"
+					item		+= 		item_display_value
 					item		+= "</div>";
 				}
-						
-						
-						
+				
+				// CLOSE DIV		
 				item			+= "</div></div>";
 						
 						
@@ -866,6 +1006,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				name += "</h3>";
 				
 				// CHART RACE
+				
 				chart.race = communityData.charts.race(
 					Math.round(parseInt(community.fusion.percent_white,		10)), 
 					Math.round(parseInt(community.fusion.percent_black,		10)), 
@@ -899,7 +1040,8 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				// FILTER BOX
 				number_of_columns		= 0;
 				filter_box				= "<div class='popup-filterbox'>";
-				filter_box				+= "<h4>Ranked By</h4>";
+				filter_box				+= "<h4>" + config.titles_notes.popup_rank.title + "</h4>";
+				filter_box				+= "<div class='popup-box-note'>" + config.titles_notes.popup_rank.note + "</div>";
 				filter_box_column_a		= "<div class='popup-box-column'>";
 				filter_box_column_b		= "<div class='popup-box-column'>";
 				
@@ -907,7 +1049,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					var item	= "";
 					if (config.columns[i].active) {
 						
-						item = communityData.popupItem(community, config.columns[i]);
+						item = communityData.popupItem(community, config.columns[i], true);
 						number_of_columns++;
 						
 						if (VMM.Util.isEven(number_of_columns)) {
@@ -933,8 +1075,9 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				race: function(white, black, asian, hispanic, other) {
 					
 					var chart	=  "";
+					chart		+= "<div class='popup-infobox'>";
 					chart		+= "<div class='bar-graph-tooltip'>";
-					chart		+= "<div class='bar-graph' style='height:24px; width:300px;'>";
+					chart		+= "<div class='bar-graph' style='width:300px;'>";
 					chart		+= "<span class='race-white' rel='tooltip' title='white' style='width:"			+ (parseInt(white,		10)) + "%'></span>";
 					chart		+= "<span class='race-black' rel='tooltip' title='black' style='width:"			+ (parseInt(black,		10)) + "%'></span>";
 					chart		+= "<span class='race-hispanic' rel='tooltip' title='hispanic' style='width:"	+ (parseInt(hispanic,		10)) + "%'></span>";
@@ -955,7 +1098,7 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 					
 					
 					chart		+= "</div>";
-					
+					chart		+= "</div>";
 					//$('#foo').bind('mouseenter mouseleave', function() {
 					 // $(this).toggleClass('entered');
 					//});
@@ -1020,10 +1163,10 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 			datanav.init(config.nav);
 			
 			list_main = new VMM.DataList($main_list, config);
-			list_main.init(data, 0, config.list.main);
+			list_main.init(data, 0, config.titles_notes.list);
 			
 			list_nav = new VMM.DataList($nav_list, config);
-			list_nav.init(data, 10, config.list.nav);
+			list_nav.init(data, 10, config.titles_notes.list);
 			
 			
 			datamap.updateLayers();
