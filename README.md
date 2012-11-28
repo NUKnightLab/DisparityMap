@@ -88,12 +88,14 @@ Information that is used to rank disparity. Each column you define in the config
 * `column_name` The name of the Google Fusion column name
 * `note` disclaimers or further discription. It's shown next to the title.
 * `active` sets weither the category is active or not when the page first loads
+* `inverse` if a lower number is actually worse, then set inverse to true.
 
 ### Infobox
 Extra information that is displayed in the popup but is not a ranking factor
 * `title` The name that is displayed in the menu
 * `column_name` The name of the Google Fusion column name
 * `note` disclaimers or further discription. It's shown next to the title.
+* `money` (optional) Helps display the number as money
 
 ### Google Fusion
 * `fusion_id` The numberic id of the fusion table you want to load

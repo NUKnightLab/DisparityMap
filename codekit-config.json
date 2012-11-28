@@ -592,15 +592,15 @@
       "initialSize" : 3945,
       "fileType" : 8192
     },
-    "\/Source\/js\/Core\/VMM.FileExtention.js" : {
-      "ignoreWasSetByUser" : 0,
+    "\/Source\/js\/Core\/Media\/VMM.Media.js" : {
+      "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.FileExtention.js",
+      "inputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.Media.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.FileExtention-min.js",
+      "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.Media-min.js",
       "fileType" : 64
     },
     "\/Source\/js\/Core\/Library\/AES.js" : {
@@ -623,6 +623,17 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+    "\/Source\/js\/Core\/VMM.FileExtention.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.FileExtention.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/Source\/js\/Core\/VMM.FileExtention-min.js",
+      "fileType" : 64
+    },
     "\/Source\/less\/Reset.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -635,17 +646,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/Source\/js\/Core\/Media\/VMM.Media.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.Media.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/Source\/js\/Core\/Media\/VMM.Media-min.js",
-      "fileType" : 64
     }
   },
   "manualImportLinks" : [
