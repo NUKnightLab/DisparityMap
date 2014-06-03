@@ -454,8 +454,9 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 		function getData() {
 			trace("GET DATA");
 			
-			var fusion_url = 'http://tables.googlelabs.com/api/query?sql=SELECT * FROM ' + config.fusion_id +  '&jsonCallback=?';
-			
+			//var fusion_url = 'http://tables.googlelabs.com/api/query?sql=SELECT * FROM ' + config.fusion_id +  '&jsonCallback=?';
+			//var fusion_url = 'https://www.googleapis.com/fusiontables/v1/query?sql=SELECT * FROM ' + config.fusion_id +  '&key=AIzaSyDR1r1dgDO2_1psnPJd24xenxtmz_wnKP8'  + '&jsonCallback=?';
+			var fusion_url = "fusiontable_data.json";
 			function getGVar(v) {
 				if (typeof v != 'undefined') {
 					return v;
@@ -478,16 +479,17 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				// LOAD FUSION DATA
 				VMM.getJSON(fusion_url, function(fusion_data) {
 					trace("FUSION DATA LOADED");
+					trace(fusion_data)
 					VMM.fireEvent($main, config.events.messege, "Loaded Fusion Data");
 					config.loaded.fusion = true;
-					for(var k = 0; k < fusion_data.table.rows.length; k++) {
+					for(var k = 0; k < fusion_data.rows.length; k++) {
 						var community	= {},
 							num			= 0,
 							j			= 0;
 							
 						//trace(fusion_data.table.rows[k]);
-						for(j = 0; j < fusion_data.table.cols.length; j++) {
-							community[fusion_data.table.cols[j].toLowerCase()] = fusion_data.table.rows[k][j];
+						for(j = 0; j < fusion_data.columns.length; j++) {
+							community[fusion_data.columns[j].toLowerCase()] = fusion_data.rows[k][j];
 						}
 						
 						num = [parseFloat(getGVar(community.community_area)) - 1]; 

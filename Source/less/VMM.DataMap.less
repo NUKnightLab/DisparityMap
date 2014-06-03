@@ -8,13 +8,50 @@
 	.datamap {
 		.map-key {
 			position:			relative;
-			top:				-85px;
+			top:				-100px;
 			left:				10px;
 			padding: 			10px;
 			border: 			1px solid @color-line;
 			width: 				225px;
 			background-color: 	@color-base;
 			z-index: 99;
+			//.box-shadow(1px 1px 2px @color-dark-fourth);
+			.map-key-text {
+				font-size: 12px;
+				line-height: 13px;
+				color: @color-dark-third;
+				margin-bottom: 3px;
+			}
+			.map-key-item {
+				width: 					100%;
+				.clearfix();
+				//margin-bottom:			2px;
+				.map-key-item-color {
+					width: 				71px;
+					padding:			2px;
+					float:				left;
+					font-size:			12px;
+					line-height:		12px;
+					background-color:	@color-theme;
+					color:				@color-base;
+					font-weight: 		bold;
+					text-align:			center;
+					//text-shadow:		@color-dark -1px 1px 2px;
+					//border: 			1px solid @color-line;
+				}
+				.map-key-low {
+					background-color:	lighten(@color-theme, 40%);
+				}
+				.map-key-medium {
+					background-color:	lighten(@color-theme, 20%);
+					//border-left: 		1px solid lighten(@color-theme, 20%);
+					//border-right: 		1px solid lighten(@color-theme, 20%);
+				}
+				.map-key-high {
+				
+				}
+			}
+			
 			h4 {
 				font-size:		14px;
 				line-height:	14px;
@@ -22,9 +59,11 @@
 				margin-bottom:	5px;
 			}
 			.bar-graph {
+				//display:none;
 				margin-bottom:	2px;
 				height:			12px;
-				border: 		1px solid @color-line;
+				.border-radius(0px); 
+				//border: 		1px solid @color-line;
 				.bar-main {
 					.gradient(@color-base, @color-theme);
 					//border: 	1px solid @color-line;
@@ -36,10 +75,10 @@
 			font-weight:bold;
 		}
 		.datamap-container-mask {
-			//width: 100%;
-			height:100%;
-			border: 1px solid @color-line;
-			overflow:hidden;
+			//width:	100%;
+			height:		100%;
+			border: 	1px solid @color-line;
+			overflow:	hidden;
 			//.border-radius(5px);
 			
 			.datamap-container {

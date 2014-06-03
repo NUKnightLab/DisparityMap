@@ -7768,6 +7768,8 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 	VMM.DataMap = function(parent, parent_config) {
 		
 		var events			= {},
+			hide_map		= false,
+			map_opacity		= .99,
 			config			= {},
 			locations		= [],
 			data,
@@ -7858,6 +7860,15 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			build();
 		};
 		
+		this.hideMap = function(d) {
+			hide_map = d;
+			if (hide_map) {
+				map_layer.setOpacity(0);
+			} else {
+				map_layer.setOpacity(map_opacity);
+			}
+		}
+		
 		this.updateLayers = function() {
 			//buildMapLayers(d);
 			//updatePopups();
@@ -7903,7 +7914,11 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 		/* EVENTS
 		================================================== */
 		function onPopupOpen(e) {
-			map_layer.setOpacity(.3);
+			if (hide_map) {
+				map_layer.setOpacity(0);
+			} else {
+				map_layer.setOpacity(.3);
+			}
 			
 			trace("onPopupOpen");
 			if (silent_popup) {
@@ -7916,7 +7931,12 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 		
 		function onPopupClose(e) {
 			trace("onPopupClose");
-			map_layer.setOpacity(.99);
+			if (hide_map) {
+				map_layer.setOpacity(0);
+			} else {
+				map_layer.setOpacity(map_opacity);
+			}
+			
 			trace(e.popup.name);
 			
 			for(var i = 0; i < popup_array.length; i++) {
@@ -8039,12 +8059,41 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			var i	= 0;
 			
 			for(i = 0; i < data.communities.length; i++) {
-				
+				var opacity_num;
 				// POLY OPACITY
-				var opacity_num = 1 - (i/data.communities.length);
+				opacity_num = 1 - (i/data.communities.length);
+				
 				if (opacity_num < .1) {
 					opacity_num = .1;
 				}
+				
+				// Group opacities into groups
+				/*
+				if (opacity_num < .3) {
+					opacity_num = .1;
+				} else if (opacity_num < .5) {
+					opacity_num = .3;
+				} else if (opacity_num < .7) {
+					opacity_num = .5;
+				} else if (opacity_num < .9) {
+					opacity_num = .7;
+				} else if (opacity_num > .9) {
+					opacity_num = 1;
+				}
+				*/
+				// Rank 1-10 1
+				// Rank 11-40 .5
+				// Rank 40-77 .1
+				if (opacity_num < .48) {
+					opacity_num = .1;
+					trace(i + " .1");
+				} else if (opacity_num < .88) {
+					opacity_num = .5;
+					trace(i + " .5");
+				} else if (opacity_num >= .88) {
+					opacity_num = 1;
+				}
+				
 				data.communities[i].community.poly.polygon.setStyle({fillOpacity:opacity_num});
 				
 				// POPUP
@@ -8145,6 +8194,11 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			
 			// MAP OPACITY
 			//map_layer.setOpacity(.5);
+			if (hide_map) {
+				map_layer.setOpacity(0);
+			} else {
+				map_layer.setOpacity(map_opacity);
+			}
 			
 			// MAP POSITION
 			map_pos.normal		= map.getCenter();
@@ -8233,8 +8287,24 @@ if(typeof VMM != 'undefined' && typeof VMM.DataMap == 'undefined') {
 			//$datamap			= VMM.appendAndGetElement($layout, "<div>", "datamap");
 			$datamap_mask		= VMM.appendAndGetElement($layout, "<div>", "datamap-container-mask");
 			$datamap_container	= VMM.appendAndGetElement($datamap_mask, "<div>", "datamap-container");
-			$datamap_key		= "<div class='map-key'><div class='bar-graph'><div class='bar-main' style='width:100%'></div></div><div class='bar-range'><div class='bar-range-start'>Less Disadvantaged</div><div class='bar-range-end'>More Disadvantaged</div></div></div>";
+			$datamap_key		= "<div class='map-key'><div class='map-key-text'>Ranked by selected criteria.</div><div class='map-key-item'><div class='map-key-item-color map-key-low'>40-77</div><div class='map-key-item-color map-key-medium'>11-40</div><div class='map-key-item-color map-key-high'>1-10</div></div><div class='bar-graph'><div class='bar-main' style='width:100%'></div></div><div class='bar-range'><div class='bar-range-start'>Less Disadvantaged</div><div class='bar-range-end'>More Disadvantaged</div></div></div>";
 			
+			/*
+			<div class='map-key-item'>
+				<div class='map-key-item-color map-key-low'>
+					Rank 40-77
+				</div>
+				<div class='map-key-item-color map-key-medium'>
+					Rank 11-40
+				</div>
+				<div class='map-key-item-color map-key-high'>
+					Rank 1-10
+				</div>
+			</div>
+			*/
+			// Rank 1-10 1
+			// Rank 11-40 .5
+			// Rank 40-77 .1
 			VMM.appendElement($layout, $datamap_key);
 			
 			VMM.Lib.attr($datamap_container, "id", unique_id);
@@ -9151,8 +9221,9 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 		function getData() {
 			trace("GET DATA");
 			
-			var fusion_url = 'http://tables.googlelabs.com/api/query?sql=SELECT * FROM ' + config.fusion_id +  '&jsonCallback=?';
-			
+			//var fusion_url = 'http://fusiontables.googleusercontent.com/api/query?sql=SELECT * FROM ' + config.fusion_id +  '&key=AIzaSyDR1r1dgDO2_1psnPJd24xenxtmz_wnKP8'  + '&jsonCallback=?';
+			//var fusion_url = 'https://www.googleapis.com/fusiontables/v1/query?sql=SELECT * FROM ' + config.fusion_id +  '&key=AIzaSyDR1r1dgDO2_1psnPJd24xenxtmz_wnKP8'  + '&jsonCallback=?';
+			var fusion_url = "fusiontable_data.json";
 			function getGVar(v) {
 				if (typeof v != 'undefined') {
 					return v;
@@ -9175,16 +9246,17 @@ if(typeof VMM != 'undefined' && typeof VMM.DisparityMap == 'undefined') {
 				// LOAD FUSION DATA
 				VMM.getJSON(fusion_url, function(fusion_data) {
 					trace("FUSION DATA LOADED");
+					trace(fusion_data)
 					VMM.fireEvent($main, config.events.messege, "Loaded Fusion Data");
 					config.loaded.fusion = true;
-					for(var k = 0; k < fusion_data.table.rows.length; k++) {
+					for(var k = 0; k < fusion_data.rows.length; k++) {
 						var community	= {},
 							num			= 0,
 							j			= 0;
 							
 						//trace(fusion_data.table.rows[k]);
-						for(j = 0; j < fusion_data.table.cols.length; j++) {
-							community[fusion_data.table.cols[j].toLowerCase()] = fusion_data.table.rows[k][j];
+						for(j = 0; j < fusion_data.columns.length; j++) {
+							community[fusion_data.columns[j].toLowerCase()] = fusion_data.rows[k][j];
 						}
 						
 						num = [parseFloat(getGVar(community.community_area)) - 1]; 

@@ -106,8 +106,16 @@
 .vmm-disparitymap a{color:#c43c35;text-decoration:none;}
 .vmm-disparitymap a:hover{color:#882a25;text-decoration:underline;}
 .vmm-disparitymap .zFront{z-index:204;}
-.vmm-disparitymap .datamap .map-key{position:relative;top:-85px;left:10px;padding:10px;border:1px solid #cccccc;width:225px;background-color:#ffffff;z-index:99;}.vmm-disparitymap .datamap .map-key h4{font-size:14px;line-height:14px;color:#666666;margin-bottom:5px;}
-.vmm-disparitymap .datamap .map-key .bar-graph{margin-bottom:2px;height:12px;border:1px solid #cccccc;}.vmm-disparitymap .datamap .map-key .bar-graph .bar-main{background-color:#c43c35;background-image:-moz-linear-gradient(left, #ffffff, #c43c35);background-image:-webkit-gradient(linear, 0 0, 100% 0, from(#ffffff), to(#c43c35));background-image:-webkit-linear-gradient(left, #ffffff, #c43c35);background-image:-o-linear-gradient(left, #ffffff, #c43c35);background-image:linear-gradient(to right, #ffffff, #c43c35);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffc43c35', GradientType=1);}
+.vmm-disparitymap .datamap .map-key{position:relative;top:-100px;left:10px;padding:10px;border:1px solid #cccccc;width:225px;background-color:#ffffff;z-index:99;}.vmm-disparitymap .datamap .map-key .map-key-text{font-size:12px;line-height:13px;color:#666666;margin-bottom:3px;}
+.vmm-disparitymap .datamap .map-key .map-key-item{width:100%;*zoom:1;zoom:1;}.vmm-disparitymap .datamap .map-key .map-key-item:before,.vmm-disparitymap .datamap .map-key .map-key-item:after{display:table;content:"";}
+.vmm-disparitymap .datamap .map-key .map-key-item:after{clear:both;}
+.vmm-disparitymap .datamap .map-key .map-key-item:before,.vmm-disparitymap .datamap .map-key .map-key-item:after{display:table;content:"";zoom:1;}
+.vmm-disparitymap .datamap .map-key .map-key-item:after{clear:both;}
+.vmm-disparitymap .datamap .map-key .map-key-item .map-key-item-color{width:71px;padding:2px;float:left;font-size:12px;line-height:12px;background-color:#c43c35;color:#ffffff;font-weight:bold;text-align:center;}
+.vmm-disparitymap .datamap .map-key .map-key-item .map-key-low{background-color:#f3d4d2;}
+.vmm-disparitymap .datamap .map-key .map-key-item .map-key-medium{background-color:#dd8682;}
+.vmm-disparitymap .datamap .map-key h4{font-size:14px;line-height:14px;color:#666666;margin-bottom:5px;}
+.vmm-disparitymap .datamap .map-key .bar-graph{margin-bottom:2px;height:12px;-webkit-border-radius:0px;-moz-border-radius:0px;border-radius:0px;}.vmm-disparitymap .datamap .map-key .bar-graph .bar-main{background-color:#c43c35;background-image:-moz-linear-gradient(left, #ffffff, #c43c35);background-image:-webkit-gradient(linear, 0 0, 100% 0, from(#ffffff), to(#c43c35));background-image:-webkit-linear-gradient(left, #ffffff, #c43c35);background-image:-o-linear-gradient(left, #ffffff, #c43c35);background-image:linear-gradient(to right, #ffffff, #c43c35);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffc43c35', GradientType=1);}
 .vmm-disparitymap .datamap h3{font-weight:bold;}
 .vmm-disparitymap .datamap .datamap-container-mask{height:100%;border:1px solid #cccccc;overflow:hidden;}.vmm-disparitymap .datamap .datamap-container-mask .datamap-container{width:100%;height:100%;}
 .vmm-disparitymap .datamap .leaflet-popup .popup-info{*zoom:1;zoom:1;text-align:left;}.vmm-disparitymap .datamap .leaflet-popup .popup-info:before,.vmm-disparitymap .datamap .leaflet-popup .popup-info:after{display:table;content:"";}
